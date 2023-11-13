@@ -40,10 +40,12 @@ body {
 .upBtn {
     position: absolute;
     top: 3.4rem;
+    left: 59.1rem;
 }
 .downBtn {
     position: absolute;
     top: 20.5rem;
+    left: 59.1rem;
 }
 
 .textContent {
