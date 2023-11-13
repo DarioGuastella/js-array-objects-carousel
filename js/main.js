@@ -23,43 +23,68 @@ const images = [
     }
 ];
 
-// //INSERISCO LE IMMAGINI
-// let imagesToAdd = "";
-// images.forEach((element) => {
-//         console.log(element);
-//         let image = `<img src="${element.image}">`;
-//         console.log(image);
-//         imagesToAdd += image;
-//     });
-// document.getElementById("wrapper").innerHTML += imagesToAdd;
-// // Visualizzo la prima immagine
-// let currentImg = 0;
-// const imagesDOM = document.querySelectorAll("#wrapper img");
-// imagesDOM[currentImg].classList.add("displayed");
+//INSERISCO LE IMMAGINI
+let imagesToAdd = "";
+let textContentToAdd = "";
+images.forEach((element) => {
+    console.log(element);
+    let image = `<img src="${element.image}">`;
+    let content = `<h3 class="textContent title">${element.title}</h3>
+    <p class="textContent">${element.text}</p>`
+    console.log(image);
+    console.log(content);
+    imagesToAdd += `${image} ${content}`;
+});
+document.getElementById("wrapper").innerHTML += imagesToAdd;
+// Visualizzo la prima immagine
+let currentImg = 0;
+const imagesDOM = document.querySelectorAll("#wrapper img");
+const titlesDOM = document.querySelectorAll("#wrapper h3");
+const textDOM = document.querySelectorAll("#wrapper p");
+imagesDOM[currentImg].classList.add("displayed");
+titlesDOM[currentImg].classList.add("displayed");
+textDOM[currentImg].classList.add("displayed");
 
-// // Pulsante SU
+// Pulsante SU
 
-// document.getElementById("arrowUp").addEventListener("click", function () {
-//     if (currentImg < imagesDOM.length - 1) {
-//         imagesDOM[currentImg].classList.remove("displayed");
-//         currentImg++;
-//         imagesDOM[currentImg].classList.add("displayed");
-//     } else if (currentImg == imagesDOM.length - 1) {
-//         imagesDOM[currentImg].classList.remove("displayed");
-//         currentImg = 0;
-//         imagesDOM[currentImg].classList.add("displayed");
-//     }
-// });
-// // Pulsante GIU 
+document.getElementById("arrowUp").addEventListener("click", function () {
+    if (currentImg < imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg++;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    } else if (currentImg == imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg = 0;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    }
+    console.log(currentImg);
+});
+// Pulsante GIU 
 
-// document.getElementById("arrowDown").addEventListener("click", function () {
-//     if (currentImg > 0) {
-//         imagesDOM[currentImg].classList.remove("displayed");
-//         currentImg--;
-//         imagesDOM[currentImg].classList.add("displayed");
-//     } else if (currentImg == 0) {
-//         imagesDOM[currentImg].classList.remove("displayed");
-//         currentImg = imagesDOM.length - 1;
-//         imagesDOM[currentImg].classList.add("displayed");
-//     }
-// });
+document.getElementById("arrowDown").addEventListener("click", function () {
+    if (currentImg > 0) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg--;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    } else if (currentImg == 0) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg = imagesDOM.length - 1;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    }
+});
