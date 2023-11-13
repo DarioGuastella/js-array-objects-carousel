@@ -27,12 +27,9 @@ const images = [
 let imagesToAdd = "";
 let textContentToAdd = "";
 images.forEach((element) => {
-    console.log(element);
     let image = `<img src="${element.image}">`;
     let content = `<h3 class="textContent title">${element.title}</h3>
     <p class="textContent">${element.text}</p>`
-    console.log(image);
-    console.log(content);
     imagesToAdd += `${image} ${content}`;
 });
 document.getElementById("wrapper").innerHTML += imagesToAdd;
@@ -65,7 +62,6 @@ document.getElementById("arrowUp").addEventListener("click", function () {
         titlesDOM[currentImg].classList.add("displayed");
         textDOM[currentImg].classList.add("displayed");
     }
-    console.log(currentImg);
 });
 // Pulsante GIU 
 
@@ -88,3 +84,25 @@ document.getElementById("arrowDown").addEventListener("click", function () {
         textDOM[currentImg].classList.add("displayed");
     }
 });
+
+//BONUS AUTOPLAY
+
+setInterval(function () {
+    if (currentImg < imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg++;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    } else if (currentImg == imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        titlesDOM[currentImg].classList.remove("displayed");
+        textDOM[currentImg].classList.remove("displayed");
+        currentImg = 0;
+        imagesDOM[currentImg].classList.add("displayed");
+        titlesDOM[currentImg].classList.add("displayed");
+        textDOM[currentImg].classList.add("displayed");
+    }
+}, 3000);
