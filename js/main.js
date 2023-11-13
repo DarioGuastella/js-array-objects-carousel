@@ -105,8 +105,31 @@ document.getElementById("start").addEventListener("click", function(){
             textDOM[currentCard].classList.add("displayed");
         }
     }, 3000);
-})
+});
 
+//BONUS AUTOPLAY REVERT
+document.getElementById("invert").addEventListener("click", function () {
+    clearInterval(autoplay);
+    autoplay = setInterval(function () {
+        if (currentCard > 0) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard--;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
+    } else if (currentCard == 0) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard = imagesDOM.length - 1;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
+    }
+}, 3000);
+});
 //BONUS STOP AUTOPLAY
 document.getElementById("stop").addEventListener("click", function(){
     clearInterval(autoplay);
