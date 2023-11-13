@@ -22,3 +22,44 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+//INSERISCO LE IMMAGINI
+let imagesToAdd = "";
+images.forEach((element) => {
+        console.log(element);
+        let image = `<img src="${element.image}">`;
+        console.log(image);
+        imagesToAdd += image;
+    });
+document.getElementById("wrapper").innerHTML += imagesToAdd;
+// Visualizzo la prima immagine
+let currentImg = 0;
+const imagesDOM = document.querySelectorAll("#wrapper img");
+imagesDOM[currentImg].classList.add("displayed");
+
+// Pulsante SU
+
+document.getElementById("arrowUp").addEventListener("click", function () {
+    if (currentImg < imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        currentImg++;
+        imagesDOM[currentImg].classList.add("displayed");
+    } else if (currentImg == imagesDOM.length - 1) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        currentImg = 0;
+        imagesDOM[currentImg].classList.add("displayed");
+    }
+});
+// Pulsante GIU 
+
+document.getElementById("arrowDown").addEventListener("click", function () {
+    if (currentImg > 0) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        currentImg--;
+        imagesDOM[currentImg].classList.add("displayed");
+    } else if (currentImg == 0) {
+        imagesDOM[currentImg].classList.remove("displayed");
+        currentImg = imagesDOM.length - 1;
+        imagesDOM[currentImg].classList.add("displayed");
+    }
+});
