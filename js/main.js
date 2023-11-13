@@ -85,24 +85,30 @@ document.getElementById("arrowDown").addEventListener("click", function () {
     }
 });
 
-//BONUS AUTOPLAY
+//BONUS START AUTOPLAY
+document.getElementById("start").addEventListener("click", function(){
+    autoplay = setInterval(function () {
+        if (currentImg < imagesDOM.length - 1) {
+            imagesDOM[currentImg].classList.remove("displayed");
+            titlesDOM[currentImg].classList.remove("displayed");
+            textDOM[currentImg].classList.remove("displayed");
+            currentImg++;
+            imagesDOM[currentImg].classList.add("displayed");
+            titlesDOM[currentImg].classList.add("displayed");
+            textDOM[currentImg].classList.add("displayed");
+        } else if (currentImg == imagesDOM.length - 1) {
+            imagesDOM[currentImg].classList.remove("displayed");
+            titlesDOM[currentImg].classList.remove("displayed");
+            textDOM[currentImg].classList.remove("displayed");
+            currentImg = 0;
+            imagesDOM[currentImg].classList.add("displayed");
+            titlesDOM[currentImg].classList.add("displayed");
+            textDOM[currentImg].classList.add("displayed");
+        }
+    }, 3000);
+})
 
-setInterval(function () {
-    if (currentImg < imagesDOM.length - 1) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg++;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
-    } else if (currentImg == imagesDOM.length - 1) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg = 0;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
-    }
-}, 3000);
+//BONUS STOP AUTOPLAY
+document.getElementById("stop").addEventListener("click", function(){
+    clearInterval(autoplay);
+})
