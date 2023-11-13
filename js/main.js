@@ -24,86 +24,85 @@ const images = [
 ];
 
 //INSERISCO LE IMMAGINI
-let imagesToAdd = "";
-let textContentToAdd = "";
+let contentToAdd = "";
 images.forEach((element) => {
     let image = `<img src="${element.image}">`;
     let content = `<h3 class="textContent title">${element.title}</h3>
     <p class="textContent">${element.text}</p>`
-    imagesToAdd += `${image} ${content}`;
+    contentToAdd += `${image} ${content}`;
 });
-document.getElementById("wrapper").innerHTML += imagesToAdd;
+document.getElementById("wrapper").innerHTML += contentToAdd;
 // Visualizzo la prima immagine
-let currentImg = 0;
+let currentCard = 0;
 const imagesDOM = document.querySelectorAll("#wrapper img");
 const titlesDOM = document.querySelectorAll("#wrapper h3");
 const textDOM = document.querySelectorAll("#wrapper p");
-imagesDOM[currentImg].classList.add("displayed");
-titlesDOM[currentImg].classList.add("displayed");
-textDOM[currentImg].classList.add("displayed");
+imagesDOM[currentCard].classList.add("displayed");
+titlesDOM[currentCard].classList.add("displayed");
+textDOM[currentCard].classList.add("displayed");
 
 // Pulsante SU
 
 document.getElementById("arrowUp").addEventListener("click", function () {
-    if (currentImg < imagesDOM.length - 1) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg++;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
-    } else if (currentImg == imagesDOM.length - 1) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg = 0;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
+    if (currentCard < imagesDOM.length - 1) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard++;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
+    } else if (currentCard == imagesDOM.length - 1) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard = 0;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
     }
 });
 // Pulsante GIU 
 
 document.getElementById("arrowDown").addEventListener("click", function () {
-    if (currentImg > 0) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg--;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
-    } else if (currentImg == 0) {
-        imagesDOM[currentImg].classList.remove("displayed");
-        titlesDOM[currentImg].classList.remove("displayed");
-        textDOM[currentImg].classList.remove("displayed");
-        currentImg = imagesDOM.length - 1;
-        imagesDOM[currentImg].classList.add("displayed");
-        titlesDOM[currentImg].classList.add("displayed");
-        textDOM[currentImg].classList.add("displayed");
+    if (currentCard > 0) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard--;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
+    } else if (currentCard == 0) {
+        imagesDOM[currentCard].classList.remove("displayed");
+        titlesDOM[currentCard].classList.remove("displayed");
+        textDOM[currentCard].classList.remove("displayed");
+        currentCard = imagesDOM.length - 1;
+        imagesDOM[currentCard].classList.add("displayed");
+        titlesDOM[currentCard].classList.add("displayed");
+        textDOM[currentCard].classList.add("displayed");
     }
 });
 
 //BONUS START AUTOPLAY
 document.getElementById("start").addEventListener("click", function(){
     autoplay = setInterval(function () {
-        if (currentImg < imagesDOM.length - 1) {
-            imagesDOM[currentImg].classList.remove("displayed");
-            titlesDOM[currentImg].classList.remove("displayed");
-            textDOM[currentImg].classList.remove("displayed");
-            currentImg++;
-            imagesDOM[currentImg].classList.add("displayed");
-            titlesDOM[currentImg].classList.add("displayed");
-            textDOM[currentImg].classList.add("displayed");
-        } else if (currentImg == imagesDOM.length - 1) {
-            imagesDOM[currentImg].classList.remove("displayed");
-            titlesDOM[currentImg].classList.remove("displayed");
-            textDOM[currentImg].classList.remove("displayed");
-            currentImg = 0;
-            imagesDOM[currentImg].classList.add("displayed");
-            titlesDOM[currentImg].classList.add("displayed");
-            textDOM[currentImg].classList.add("displayed");
+        if (currentCard < imagesDOM.length - 1) {
+            imagesDOM[currentCard].classList.remove("displayed");
+            titlesDOM[currentCard].classList.remove("displayed");
+            textDOM[currentCard].classList.remove("displayed");
+            currentCard++;
+            imagesDOM[currentCard].classList.add("displayed");
+            titlesDOM[currentCard].classList.add("displayed");
+            textDOM[currentCard].classList.add("displayed");
+        } else if (currentCard == imagesDOM.length - 1) {
+            imagesDOM[currentCard].classList.remove("displayed");
+            titlesDOM[currentCard].classList.remove("displayed");
+            textDOM[currentCard].classList.remove("displayed");
+            currentCard = 0;
+            imagesDOM[currentCard].classList.add("displayed");
+            titlesDOM[currentCard].classList.add("displayed");
+            textDOM[currentCard].classList.add("displayed");
         }
     }, 3000);
 })
