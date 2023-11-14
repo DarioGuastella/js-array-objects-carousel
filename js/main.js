@@ -23,7 +23,7 @@ const images = [
     }
 ];
 
-//INSERISCO LE IMMAGINI
+//INSERISCO LE IMMAGINI E CONTENUTO
 let contentToAdd = "";
 images.forEach((element) => {
     let image = `<img src="${element.image}">`;
@@ -99,16 +99,17 @@ document.getElementById("invert").addEventListener("click", function () {
 //BONUS STOP AUTOPLAY
 document.getElementById("stop").addEventListener("click", function () {
     clearInterval(autoplay);
-})
+});
 
+// FUNZIONI
 function hideContent() {
     imagesDOM[currentCard].classList.remove("displayed");
     titlesDOM[currentCard].classList.remove("displayed");
     textDOM[currentCard].classList.remove("displayed");
-}
+};
 
 function showContent() {
     imagesDOM[currentCard].classList.add("displayed");
     titlesDOM[currentCard].classList.add("displayed");
     textDOM[currentCard].classList.add("displayed");
-}
+};
