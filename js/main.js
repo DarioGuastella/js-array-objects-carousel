@@ -43,40 +43,40 @@ showContent();
 
 document.getElementById("arrowUp").addEventListener("click", function () {
     if (currentCard < imagesDOM.length - 1) {
-        hideContent()
+        hideContent();
         currentCard++;
-        showContent()
+        showContent();
     } else if (currentCard == imagesDOM.length - 1) {
-        hideContent()
+        hideContent();
         currentCard = 0;
-        showContent()
+        showContent();
     }
 });
 // Pulsante GIU 
 
 document.getElementById("arrowDown").addEventListener("click", function () {
     if (currentCard > 0) {
-        hideContent()
+        hideContent();
         currentCard--;
-        showContent()
+        showContent();
     } else if (currentCard == 0) {
-        hideContent()
+        hideContent();
         currentCard = imagesDOM.length - 1;
-        showContent()
+        showContent();
     }
 });
 
 //BONUS START AUTOPLAY
-document.getElementById("start").addEventListener("click", function(){
+document.getElementById("start").addEventListener("click", function () {
     autoplay = setInterval(function () {
         if (currentCard < imagesDOM.length - 1) {
-            hideContent()
+            hideContent();
             currentCard++;
-            showContent()
+            showContent();
         } else if (currentCard == imagesDOM.length - 1) {
-            hideContent()
+            hideContent();
             currentCard = 0;
-            showContent()
+            showContent();
         }
     }, 3000);
 });
@@ -86,18 +86,18 @@ document.getElementById("invert").addEventListener("click", function () {
     clearInterval(autoplay);
     autoplay = setInterval(function () {
         if (currentCard > 0) {
-        hideContent()
-        currentCard--;
-        showContent()
-    } else if (currentCard == 0) {
-        hideContent()
-        currentCard = imagesDOM.length - 1;
-        showContent()
-    }
-}, 3000);
+            hideContent();
+            currentCard--;
+            showContent();
+        } else if (currentCard == 0) {
+            hideContent();
+            currentCard = imagesDOM.length - 1;
+            showContent();
+        }
+    }, 3000);
 });
 //BONUS STOP AUTOPLAY
-document.getElementById("stop").addEventListener("click", function(){
+document.getElementById("stop").addEventListener("click", function () {
     clearInterval(autoplay);
 })
 
