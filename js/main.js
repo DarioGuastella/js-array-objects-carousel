@@ -19,7 +19,7 @@ const images = [
     }, {
         image: 'img/05.webp',
         title: "Marvel's Avengers",
-        text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+        text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
     }
 ];
 
@@ -37,50 +37,32 @@ let currentCard = 0;
 const imagesDOM = document.querySelectorAll("#wrapper img");
 const titlesDOM = document.querySelectorAll("#wrapper h3");
 const textDOM = document.querySelectorAll("#wrapper p");
-imagesDOM[currentCard].classList.add("displayed");
-titlesDOM[currentCard].classList.add("displayed");
-textDOM[currentCard].classList.add("displayed");
+showContent();
 
 // Pulsante SU
 
 document.getElementById("arrowUp").addEventListener("click", function () {
     if (currentCard < imagesDOM.length - 1) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard++;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     } else if (currentCard == imagesDOM.length - 1) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard = 0;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     }
 });
 // Pulsante GIU 
 
 document.getElementById("arrowDown").addEventListener("click", function () {
     if (currentCard > 0) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard--;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     } else if (currentCard == 0) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard = imagesDOM.length - 1;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     }
 });
 
@@ -88,21 +70,13 @@ document.getElementById("arrowDown").addEventListener("click", function () {
 document.getElementById("start").addEventListener("click", function(){
     autoplay = setInterval(function () {
         if (currentCard < imagesDOM.length - 1) {
-            imagesDOM[currentCard].classList.remove("displayed");
-            titlesDOM[currentCard].classList.remove("displayed");
-            textDOM[currentCard].classList.remove("displayed");
+            hideContent()
             currentCard++;
-            imagesDOM[currentCard].classList.add("displayed");
-            titlesDOM[currentCard].classList.add("displayed");
-            textDOM[currentCard].classList.add("displayed");
+            showContent()
         } else if (currentCard == imagesDOM.length - 1) {
-            imagesDOM[currentCard].classList.remove("displayed");
-            titlesDOM[currentCard].classList.remove("displayed");
-            textDOM[currentCard].classList.remove("displayed");
+            hideContent()
             currentCard = 0;
-            imagesDOM[currentCard].classList.add("displayed");
-            titlesDOM[currentCard].classList.add("displayed");
-            textDOM[currentCard].classList.add("displayed");
+            showContent()
         }
     }, 3000);
 });
@@ -112,21 +86,13 @@ document.getElementById("invert").addEventListener("click", function () {
     clearInterval(autoplay);
     autoplay = setInterval(function () {
         if (currentCard > 0) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard--;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     } else if (currentCard == 0) {
-        imagesDOM[currentCard].classList.remove("displayed");
-        titlesDOM[currentCard].classList.remove("displayed");
-        textDOM[currentCard].classList.remove("displayed");
+        hideContent()
         currentCard = imagesDOM.length - 1;
-        imagesDOM[currentCard].classList.add("displayed");
-        titlesDOM[currentCard].classList.add("displayed");
-        textDOM[currentCard].classList.add("displayed");
+        showContent()
     }
 }, 3000);
 });
@@ -134,3 +100,15 @@ document.getElementById("invert").addEventListener("click", function () {
 document.getElementById("stop").addEventListener("click", function(){
     clearInterval(autoplay);
 })
+
+function hideContent() {
+    imagesDOM[currentCard].classList.remove("displayed");
+    titlesDOM[currentCard].classList.remove("displayed");
+    textDOM[currentCard].classList.remove("displayed");
+}
+
+function showContent() {
+    imagesDOM[currentCard].classList.add("displayed");
+    titlesDOM[currentCard].classList.add("displayed");
+    textDOM[currentCard].classList.add("displayed");
+}
